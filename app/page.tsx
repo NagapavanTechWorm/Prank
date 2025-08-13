@@ -33,13 +33,17 @@ export default function TrustPrankApp() {
     }, 2000)
   }
 
+  let vibrationInterval;
+
 const handleYesClick = () => {
   const audio = new Audio("/prank.mp3");
   audio.loop = true;
   audio.volume = 0.5;
   audio.play().catch(err => console.log("Play blocked:", err));
     
-  navigator.vibrate([200, 100, 200]); // vibrate pattern
+  vibrationInterval = setInterval(() => {
+      navigator.vibrate([200, 100, 200]); // Vibrate pattern
+    }, 600); // Repeat every 600ms (pattern duration)
 
   setStep(2);
 };
