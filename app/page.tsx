@@ -33,9 +33,16 @@ export default function TrustPrankApp() {
     }, 2000)
   }
 
-  const handleYesClick = () => {
-    setStep(2)
-  }
+const handleYesClick = () => {
+  const audio = new Audio("/prank.mp3");
+  audio.loop = true;
+  audio.volume = 0.5;
+  audio.play().catch(err => console.log("Play blocked:", err));
+    
+  navigator.vibrate([200, 100, 200]); // vibrate pattern
+
+  setStep(2);
+};
 
   // Generate corrupted digital noise
   const generateDigitalNoise = () => {
